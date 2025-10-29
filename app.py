@@ -6,12 +6,12 @@ import numpy as np
 app = FastAPI(title="GoalPredicta AI Model API")
 
 # --- Load your trained models ---
-clf = joblib.load("models_retrained_new/XGBClassifier_FTResult.joblib")
-reg_fthg = joblib.load("models_retrained_new/XGBRegressor_FTHome.joblib")
-reg_ftag = joblib.load("models_retrained_new/XGBRegressor_FTAway.joblib")
-reg_hthg = joblib.load("models_retrained_new/XGBRegressor_HTHome.joblib")
-reg_htag = joblib.load("models_retrained_new/XGBRegressor_HTAway.joblib")
-scaler = joblib.load("models_retrained_new/scaler.joblib")
+clf = joblib.load("XGBClassifier_FTResult.joblib")
+reg_fthg = joblib.load("XGBRegressor_FTHome.joblib")
+reg_ftag = joblib.load("XGBRegressor_FTAway.joblib")
+reg_hthg = joblib.load("XGBRegressor_HTHome.joblib")
+reg_htag = joblib.load("XGBRegressor_HTAway.joblib")
+scaler = joblib.load("scaler.joblib")
 
 # --- Input schema ---
 class MatchRequest(BaseModel):
@@ -72,6 +72,7 @@ def predict_match(req: MatchRequest):
 @app.get("/")
 def root():
     return {"message": "GoalPredicta AI Model API is running!"}
+
 
 
 
